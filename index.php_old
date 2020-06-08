@@ -1,0 +1,368 @@
+<?php session_start();
+session_destroy ();
+
+require 'Personnel/inc/function.php';
+connexiondb();
+
+$service = getAllService();
+$ets = getAllEts();
+$centre = getAllCentre();
+$corps = getAllCorps();
+ ?>
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <head>
+        <!-- Title -->
+        <title>Direction de l'Intendance de l'Armées</title>
+        <!-- Meta -->
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <!-- Favicon -->
+        <link href="themes/images/ico/favicon.png" rel="shortcut icon">
+         <link id="callCss" rel="stylesheet" href="themes/bootshop/bootstrap.min.css" media="screen"/>
+        <link href="themes/css/base.css" rel="stylesheet" media="screen"/>
+        <link  href="assets/css/bootstrap.css" rel="stylesheet">
+        <!-- Template CSS -->
+        <link  href="assets/css/animate.css" rel="stylesheet">
+        <link  href="bootstrap/css/font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link  href="assets/css/nexus.css" rel="stylesheet">
+        <link  href="assets/css/responsive.css" rel="stylesheet">
+        <link  href="assets/css/custom.css" rel="stylesheet">
+        <!-- Google Fonts-->
+        <link href="http://fonts.googleapis.com/css?family=Raleway:100,300,400" type="text/css" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Roboto:400,300" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+
+  
+        <!-- Header -->
+        <div id="header" style="background-position: 50% 0%"; data-stellar-background-ratio="0.5">
+<!--<b>Notice</b>:  Undefined variable: full_page in <b>C:\xampp\htdocs\bootstrap\html\php\header.php</b> on line <b>46</b><br />---->
+ 
+            <div class="container">
+                <div class="row">
+                    <!--- Logo -->
+                    <div class="logo">
+                        <a href="index.php" title="">
+                          
+                            <img src="assets/img/home/DSCN2645.JPG" alt="Logo" width="100%" height="300px" />
+                        </a>
+                    </div>
+                    <!-- End Logo -->
+                </div>
+            
+            </div>
+        </div>
+ 
+        <div id="content">
+            <div class="container background-gray-lighter">
+                <div class="row margin-vert-40">
+                    <!-- Begin Sidebar Menu -->
+                    <div class="col-md-3">
+                        <ul class="list-group sidebar-nav" id="sidebar-nav">
+                            <!-- Typography -->
+                            <li class="list-group-item list-toggle">
+                                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-typography">Service</a>
+                                <ul id="collapse-typography" class="collapse">
+                                <?php  foreach ($service as $data ){ ?>
+                                    <li>
+                                      <a href="personnel/class/acces.php?etsouservice=<?php echo $data->etsouservice ?>"><?php echo $data->etsouservice  ?></a>
+                                    </li>
+                                <?php }?>
+                                </ul>
+                            </li>
+                                                        <!-- End Typography -->
+                                                        <!-- Components -->
+                            <li class="list-group-item list-toggle">
+                                <a data-toggle="collapse" class="accordion-toggle" href="#collapse-components" >Etablissement</a>
+                                <ul id="collapse-components" class="collapse">
+                               <?php 
+                               foreach($ets as $liste) { ?>
+                              <li>
+                                  <a href="personnel/class/acces.php?etsouservice=<?php echo $liste->etsouservice ?>"><?php echo $liste->etsouservice ;  ?></a>
+
+                              </li>
+                              <?php }?>  
+
+                                    
+                                </ul>
+                            </li>
+                                                        <!-- End Components -->
+                                                        <!-- Icons -->
+                            <li class="list-group-item list-toggle">
+                                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse">Centre</a>
+                                <ul id="collapse" class="collapse">
+                                    <?php 
+                                foreach($centre as $liste) { ?>
+                              <li>
+                                  <a href="personnel/class/acces.php?etsouservice=<?php echo $liste->etsouservice?>"><?php echo $liste->etsouservice;  ?></a>
+                              </li>
+                                <?php }?>
+                                </ul>
+                            </li>
+                                                        <!-- End Icons -->
+                                                        <!-- Testimonials -->
+                            <li class="list-group-item list-toggle">
+                              <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse_direc">Direction</a>
+                              <ul id="collapse_direc" class="collapse">
+                                <li><a href="personnel/acces.php?etsouservice=SPCM">D2</a></li>
+                                <li><a class="active" href="personnel/acces.php?etsouservice=CAB">CAB (Cabinet)</a>
+                                </li>
+                              </ul>
+                            </li>
+                                                        <!-- End Testimonials -->
+                                                        <!-- Accordion and Tabs -->
+                            <li class="list-group-item list-toggle">
+                                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse_corps">Corps</a>
+                                <ul id="collapse_corps" class="collapse">
+                                <?php   foreach($corps as $liste){ ?>
+                                <li>
+                                    <a href="personnel/acces.php?etsouservice=<?php echo $liste->id_corps?>"><?php echo $liste->corps;  ?></a>
+                                </li>
+                              <?php }?>
+                                </ul>
+                            </li>
+                                                        <!-- End Accordion and Tabs -->
+                            <li class="list-group-item list-toggle">
+                                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-even">Evènements</a>
+                                <ul id="collapse-even" class="collapse">
+                                  <li><a href="SaintMartin/">Saint Matin</a> </li>
+                                    <li><a href="personnel/video.php"></a> Video</li>
+                                  </ul>
+                            </li>
+                            <li class="list-group-item list-toggle">
+                              <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-sport">SPORT</a>
+                                <ul id="collapse-sport" class="collapse">
+                                  <li><a href="Evenements/photos.php"></a> Calendrier</li>
+                                  <li><a href="Evenements/video.php"></a> ...</li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item"><a href="personnel/organigramme.php">ORGANIGRAMME</a></li>
+                            <li class="list-group-item"><a href="droit/">Droit Civil</a></li>
+                          </ul>
+                        </div>
+                    <!-- End Sidebar Menu -->
+
+                    <div class="col-md-9" >
+                        <p>
+
+                            <?php
+                             if(array_key_exists('errors', $_SESSION)){
+                                echo '<div class="alert alert-danger">'.$_SESSION['errors'].'</div>';
+                            }else{
+                                unset($_SESSION['errors']);
+                            }
+                            ?>
+                        </p>
+                    <div>
+            <div class="well well-small">
+            <p style='font-size:2rem; font-weight: bold'>Directeurs successifs de la DIA </p>
+            <div class="row-fluid">
+                <div id="featured" class="carousel slide">
+                  <div class="carousel-inner">
+                    <div class="item">
+                      <ul class="thumbnails">
+                        <li class="span3">
+                          <div class="thumbnail text-center"><a href="#"><img src="image/13.JPG" alt=""></a>
+                            <div class="caption"> IG ASSANY BEMARIVO Jeannot </div>
+                            <div class="caption"> 2017 à ce jour </div>
+                          </div>
+                        </li>
+                        <li class="span3">
+                          <div class="thumbnail text-center"><a href="#"><img src="image/12.JPG" alt=""></a>
+                            <div class="caption">IG RAKOTOARIMANANA Théophile Claude </div>
+                            <div class="caption">2014 - 2017 </div>
+                          </div>
+                        </li>
+                        <li class="span3">
+                          <div class="thumbnail text-center"><a href="#"><img src="image/11.JPG" alt=""></a>
+                            <div class="caption"> IG SOAMNJAKA Edmond</div>
+                            <br>
+                            <div class="caption"> 2009 - 2014</div>
+                          </div>
+                        </li>
+                        <li class="span3">
+                          <div class="thumbnail text-center"><a href="#"><img src="image/10.JPG" alt=""></a>
+                            <div class="caption">IG RABEARIVELO Justin </div>
+                            <br>
+                            <div class="caption">2008 - 2009</div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="item">
+                      <ul class="thumbnails">
+                        <li class="span3">
+                          <div class="thumbnail text-center"> <a href="#"><img src="image/9.JPG" alt=""></a>
+                            <div class="caption">IM RABARIVELO Auguste </div>
+                            <div class="caption">2006 - 2008 </div>
+                          </div>
+                        </li>
+                        <li class="span3">
+                          <div class="thumbnail text-center"> <a href="#"><img src="image/8.JPG" alt=""></a>
+                            <div class="caption"> IG KATSIHA</div>
+                            <div class="caption"> 2003 - 2006</div>
+                          </div>
+                        </li>
+                        <li class="span3">
+                          <div class="thumbnail text-center"> <a href="#"><img src="image/7.JPG" alt=""></a>
+                            <div class="caption">IG RAFIDISON Nicole Camille </div>
+                            <div class="caption">2002-2003</div>
+                          </div>
+                        </li>
+                        <li class="span3">
+                          <div class="thumbnail text-center"> <a href="#"><img src="image/6.JPG" alt=""></a>
+                            <div class="caption"> IG RANDRIANARIFARA Charles</div>
+                            <div class="caption">1997 - 2002 </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="item">
+                      <ul class="thumbnails">
+                        <li class="span3">
+                          <div class="thumbnail text-center"> <a href="#"><img src="image/5.JPG" alt=""></a>
+                            <div class="caption">IG RABEMANAMBOLA Jean Martial </div>
+                            <div class="caption"> 1973 - 1976</div>
+                          </div>
+                        </li>
+                        <li class="span3">
+                          <div class="thumbnail text-center"> <a href="#"><img src="image/4.JPG" alt=""></a>
+                            <div class="caption"> IG ANDRIANARIVELO Vonison</div>
+                            <div class="caption"> 1989 - 1993</div>
+                          </div>
+                        </li>
+                        <li class="span3">
+                          <div class="thumbnail text-center"> <a href="#"><img src="image/3.JPG" alt=""></a>
+                            <div class="caption"> IG RAKOTOMALALA Henri Jacques</div>
+                            <div class="caption"> 1985 - 1989</div>
+                          </div>
+                        </li>
+                        <li class="span3">
+                          <div class="thumbnail text-center"> <a href="#"><img src="image/2.JPG" alt=""></a>
+                            <div class="caption">IG RABESAHALA Jacques </div>
+                            <div class="caption"> 1976 - 1985</div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                     <div class="item active">
+                      <ul class="thumbnails">
+                        <li class="span3">
+                          <div class="thumbnail text-center"><a href="#"><img src="image/1.JPG" alt=""></a>
+                            <div class="caption"> IG RASOLOMALALA Jean Jacques</div>
+                            <div class="caption"> 1973 - 1976</div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                  <a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
+                  <a class="right carousel-control" href="#featured" data-slide="next">›</a>
+                </div>
+              </div>
+        </div>
+        <h4>Historique de la DIA</h4>
+              <div>
+              <div style="text-align:justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <div align="justify">La
+                      Direction de l'Administration Militaire siégeait alors à
+                      Ampahibe dans le bâtiment occupe actuellement par le
+                      secrétaire général. En 1972, l'administration militaire
+                      déménage à Soanierana à son emplacement actuel. Elle prend
+                      également l'appellation de Direction de l'Administration
+                      des Forces Armées (DAFA) Ses attributions restent celle de
+                      la DAM, mais elles sont étendues progressivement à
+                      l'ensemble des Forces Armées, y compris le Service
+                      Civique. <img width="100" height="100" style="float:left;margin:20px;" src="themes/images/ico/logo.png">
+                      </div>
+                      <p class="droit" align="justify"> La mission de l'Intendance
+                        est de procurer au combattant une efficacité maximale en
+                        contribution à son bien être, tant matériel que moral et
+                        celui de sa famille. En tant que direction d'un service
+                        de soutien, elle est tenue de satisfaire les besoins des
+                        armées en fonction des ressources et des moyens qui lui
+                        sont consentis ainsi que des priorités et échéances
+                        fixées par le commandement.</p>
+                      <div align="justify">Le plus grand changement concerne la scission de
+                      l'Administration militaire, jusque l'unique, en Direction
+                      de l'Intendance pour la partie finance, administration de
+                      soutien de l'homme et en Direction des Matériels
+                      Techniques pour le soutien en maintenance. Cette
+                      restructuration de l'administration militaire en 1988
+                      entraine des modifications importantes dans la chaine
+                      logistique de soutien Intendance: Etablissement Militaire
+                      de l'Industrie de Vêtement (EMIV) ainsi que
+                      l'Etablissement Militaire de l'Industrie de la Chaussure
+                      (EMIC), L'Etablissement de l’Imprimerie de l'Armée (EIA)
+                      sont affectes à la DMT pour la subordination, alors que
+                      l'habillement fait partie normalement de la chaine soutien
+                      de l'homme. En 1994, la Direction de l'Intendance de
+                      l'Armée (DIA), son appellation actuelle, remplace la
+                      Direction de l'Intendance de l'Armée Populaire. Le décret
+                      de modification ramène également les établissements
+                      habillement et chaussures dans les girons de l'Intendance.
+                      Il à fallu attendre ainsi dix ans plus tard, l’année 2004,
+                      avant que l'application de cette réintégration soit
+                      réalisée. La DIA assume actuellement le rôle et les
+                      attributions d'un service de l'Administration générale
+                      mais aussi logistique de l'armée. <a href="Historique/historiquedeladia.php" class="style6"><u>Détails</u></a><br>
+                      </div>
+                    </div>
+              </div>
+                <hr>
+              <div class="col-md-12 text-center">
+                <h3 class='red'>Google map - DIA/CAPSAT Soanierana -</h3>
+                <div class="card card-body">
+                  <base target="_blank">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2695.158064852258!2d47.52372718653123!3d-18.937708513181054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07e7f22278151%3A0x9bf8193928e7eab6!2sCAPSAT+Madagascar!5e1!3m2!1sfr!2smg!4v1554899491631!5m2!1sfr!2smg" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                      <!--    <video controls width="100%">
+                      <source src="dialoi/SHAYRONGASY2018.mp4" type="video/mp4">
+                      </video> -->
+                </div>
+              </div>
+
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- === END CONTENT === -->
+        <!-- === BEGIN FOOTER === -->
+        <div id="base" class="background-dark text-light">
+            <div class="container padding-vert-30">
+                <div class="row">
+                
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div id="footer" class="background-dark text-light">
+            <?php require_once('personnel/pieddepage.php') ?>
+        </div>
+            <!-- End Footer -->
+           
+            <script type="text/javascript" src="assets/js/jquery.min.js" type="text/javascript"></script>
+            <script type="text/javascript" src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+            <script type="text/javascript" src="assets/js/scripts.js"></script>
+             <script type="text/javascript" src="assets/js/jquery.isotope.js" type="text/javascript"></script>
+             <script type="text/javascript" src="assets/js/jquery.slicknav.js" type="text/javascript"></script>
+             <script type="text/javascript" src="assets/js/jquery.visible.js" charset="utf-8"></script>
+             <script type="text/javascript" src="assets/js/jquery.stellar.js" charset="utf-8"></script>
+             <script type="text/javascript" src="assets/js/jquery.sticky.js" charset="utf-8"></script>
+             <script type="text/javascript" src="assets/js/slimbox2.js" charset="utf-8"></script>
+             <script src="assets/js/modernizr.custom.js" type="text/javascript"></script>
+              
+    </body>
+</html>
+<!-- === END FOOTER === -->

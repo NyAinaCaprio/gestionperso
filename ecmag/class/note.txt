@@ -1,0 +1,36 @@
+                <div class="col-md-12 pull-left">
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-primary btn-xs" onclick="affichefenajoutarticle()"  ><i class="fa fa-plus fa-2x"></i> Nouveau Articles</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-primary btn-xs" id="detailentreearticle" onclick="mouvement()"><i class="fa fa-plus fa-2x"></i> Mouvement </a>
+                    </div>
+                </div>
+
+
+('#dynamic_feild').append('<div class="col-md-12"  id="" >\n' +
+            '                            <div class="col-md-3">\n' +
+            '                                 <select required id="reference[]" placeholder="Quantité" class="form-control"  >\n' +
+            '                                    <option value=""></option ><?php  $art = getArticle();   foreach ($art as $data) ?> \n' +
+            '                                    { \n' +
+            '                                        ?>\n' +
+            '                                        <option value="<?php echo $data[\'reference\']  ?>"><?php echo $data[\'libelleproduit\']  ?></option>\n' +
+            '                                    <?php } ?>\n' +
+            '                                </select>\n' +
+            '                            </div>\n' +
+            '                            <div class="col-md-2">\n' +
+            '                                 <input id="quantite[]"  class="form-control" required placeholder="Quantité" type="number"  >\n' +
+            '                            </div>\n' +
+            '                            <div class="col-md-2">\n' +
+            '                                 <input id="etat" class="form-control" placeholder="Etat"  type="text"  >\n' +
+            '                            </div>\n' +
+            '                            <div class="col-md-2">\n' +
+            '                                 <input id="observation[]" placeholder="Type"  class="form-control"  type="text"  >\n' +
+            '                            </div>\n' +
+            '\n' +
+            '                            <div class="col-md-2">\n' +
+            '                                 <button type="button" name="add" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>\n' +
+            '                            </div>\n' +
+            '\n' +
+            '                        </div>');
+    })

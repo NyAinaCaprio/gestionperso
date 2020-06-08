@@ -1,0 +1,85 @@
+Et vous pouvez ensuite faire ceci pour chaque type d'input !
+
+ex: $('input:button');
+
+text (Texte) input:text
+password (Mot de passe) input:password
+file (Fichier) input:file
+checkbox (Case à cocher) input:checkbox
+radio (Bouton radio) input:radio
+button (Bouton normal) input:button
+submit (Bouton d'envoi) input:submit
+
+Ainsi, vous pouvez vérifier qu'une case est cochée, ou qu'un élément est activé/désactivé, grâce aux sélecteurs suivants :
+
+:checked vérifie qu'une case est cochée ;
+:disabled cible les éléments désactivés ;
+:enabled fait le contraire, il sélectionne les éléments activés.
+
+le mot-clé this représente l'objet courant
+
+EX: 
+$('p').each(function(){
+$(this).html('Hello World !'); // $(this) représente le paragraphe courant
+});
+
+Les fonction 
+
+Clic :  click()
+Double-clic:  dblclick()
+Passage de la souris:  hover()
+Rentrer dans un élément : mouseenter()
+Quitter un élément : mouseleave()
+Presser un bouton de la souris : mousedown()
+Relâcher un bouton de la souris:  mouseup()
+Scroller (utiliser la roulette) : scroll()
+
+Ecoute sur le clavier
+
+keydown(), qui se lance lorsqu'une touche du clavier est enfoncée ;
+keypress(), qui se lance lorsqu'on maintient une touche enfoncée ;
+keyup(), qui se lance lorsqu'on relâche une touche préalablement enfoncée.
+
+
+EX :
+$(document).keyup(function(touche){ // on écoute l'évènement keyup()
+var appui = touche.which || touche.keyCode; // le code est compatible tous navigateurs grâce à ces deux propriétés
+if(appui == 13){ // si le code de la touche est égal à 13
+(Entrée)
+alert('Vous venez d\'appuyer sur la touche Entrée !'); // on
+affiche une alerte
+
+CAS DES FORMULAIRE
+
+Focalisation focus()
+Sélection (p.e. dans une liste) select()
+Changement de valeur change()
+Envoi du formulaire submit()
+
+// déclenche l'action au chargement du script
+
+$('p').click(function(){
+alert('Cliqué !');
+});
+$('p').trigger('click'); 
+
+//on declenche 2 Methodes en une seule fois
+$('#add').on({
+    click : function(){
+    alert('Vous avez cliqué !');
+},
+    mouseup : function(){
+    alert('Vous avez relâché le clic !');
+}
+});
+
+
+// annule l'action du lien
+
+$('a').click(function(e){
+e.preventDefault(); 
+});
+
+la méthode live(), pour déléguer un évènement à un élément créé dynamiquement
+contrairement à on(), qui cible directement un élément
+La fonction delegate() est presque autant utilisée que live()

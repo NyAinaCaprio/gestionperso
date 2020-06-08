@@ -1,0 +1,1 @@
+http://localhost/comptes/confirme.php?id=5&confirmation_token=f3g8jUsKcXUGAaaB5YidmL3INwupZzxZ3dKUgcwqbUbxHu8PGSIFPG2VAw7X

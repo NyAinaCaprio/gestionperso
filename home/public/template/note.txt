@@ -1,0 +1,146 @@
+ <div id="content">
+            <div class="container background-gray-lighter">
+                <div class="row margin-vert-40">
+                    <!-- Begin Sidebar Menu -->
+                    <div class="col-md-3">
+                        <ul class="list-group sidebar-nav" id="sidebar-nav">
+                            <!-- Typography -->
+                            <li class="list-group-item list-toggle">
+                                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-typography">Service</a>
+                                <ul id="collapse-typography" class="collapse">
+                                <?php  foreach ($service as $liste1 ){ ?>
+                                    <li>
+                                      <a href="Personnel/class/acces.php?etsouservice=<?php echo $liste1->etsouservice ?>"><?php echo $liste1->etsouservice  ?></a>
+                                    </li>
+                                <?php }?>
+                                </ul>
+                            </li>
+                                                        <!-- End Typography -->
+                                                        <!-- Components -->
+                            <li class="list-group-item list-toggle">
+                                <a data-toggle="collapse" class="accordion-toggle" href="#collapse-components" >Etablissement</a>
+                                <ul id="collapse-components" class="collapse">
+                               <?php 
+                               foreach($ets as $liste) { ?>
+                              <li>
+                                  <a href="Personnel/class/acces.php?etsouservice=<?php echo $liste->etsouservice ?>"><?php echo $liste->etsouservice ;  ?></a>
+
+                              </li>
+                              <?php }?>  
+
+                                    
+                                </ul>
+                            </li>
+                            <li class="list-group-item list-toggle">
+                                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse">Centre</a>
+                                <ul id="collapse" class="collapse">
+                                    <?php 
+                                foreach($centre as $liste) { ?>
+                              <li>
+                                  <a href="Personnel/class/acces.php?etsouservice=<?php echo $liste->etsouservice?>"><?php echo $liste->etsouservice;  ?></a>
+                              </li>
+                                <?php }?>
+                                </ul>
+                            </li>
+                                                        <!-- End Icons -->
+                                                        <!-- Testimonials -->
+                            <li class="list-group-item list-toggle">
+                              <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse_direc">Direction</a>
+                              <ul id="collapse_direc" class="collapse">
+                                <li><a href="Personnel/acces.php?etsouservice=SPCM">D2</a></li>
+                                <li><a class="active" href="Personnel/acces.php?etsouservice=CAB">CAB (Cabinet)</a>
+                                </li>
+                              </ul>
+                            </li>
+                                                        <!-- End Testimonials -->
+                                                        <!-- Accordion and Tabs -->
+                            <li class="list-group-item list-toggle">
+                                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse_corps">Corps</a>
+                                <ul id="collapse_corps" class="collapse">
+                                <?php   foreach($corps as $liste){ ?>
+                                <li>
+                                    <a href="Personnel/acces.php?etsouservice=<?php echo $liste->id_corps?>"><?php echo $liste->corps;  ?></a>
+                                </li>
+                              <?php }?>
+                                </ul>
+                            </li>
+                                                        <!-- End Accordion and Tabs -->
+                            <li class="list-group-item list-toggle">
+                                <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-even">Evènements</a>
+                                <ul id="collapse-even" class="collapse">
+                                  <li><a href="SaintMartin/">Saint Matin</a> </li>
+                                    <li><a href="Personnel/video.php"></a> Video</li>
+                                  </ul>
+                            </li>
+                            <li class="list-group-item list-toggle">
+                              <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-sport">SPORT</a>
+                                <ul id="collapse-sport" class="collapse">
+                                  <li><a href="Evenements/photos.php"></a> Calendrier</li>
+                                  <li><a href="Evenements/video.php"></a></li>
+                                </ul>
+                                </li>
+                                <li class="list-group-item"><a href="index.php?p=organigramme">ORGANIGRAMME</a></li>
+                            <li class="list-group-item"><a href="droit/">Droit Civil</a></li>
+                          </ul>
+                        </div>
+                    <!-- End Sidebar Menu -->
+
+                    <div class="col-md-9" >
+                        <p>
+
+                            <?php
+                             if(array_key_exists('errors', $_SESSION)){
+                                echo '<div class="alert alert-danger">'.$_SESSION['errors'].'</div>';
+                            }else{
+                                unset($_SESSION['errors']);
+                            }
+                            ?>
+                        </p>
+         
+
+      <div class="col-md-12">
+        <?php echo $contenu ?>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+</div>
+    
+        <!-- Footer -->
+        <div id="footer" class="background-dark text-light">
+            <div class="container">
+    <div class="row">
+      <div class="span3">
+        <h5>Gestion d'espace membre</h5>
+        <a href="comptes/login.php">Connexion</a><br>
+        <a href="#">Information Personnel</a>
+        
+       </div>
+      
+      <div class="span3">
+        <h5>Sociale</h5>
+        <a href="#">Activité social</a> <br>
+        <a href="#">Participation annuelle</a> 
+        
+       </div>
+      <div id="socialMedia" class="span3 pull-right">
+         <ul class="social-icons pull-right hidden-xs">
+                  <li class="social-rss">
+                    <span> <i class="fa fa-facebook fa-2x" ></i> </span>
+                </li>
+                  <li class="social-twitter">
+                    <i class="fa fa-twitter fa-2x" ></i>
+                  </li>
+                  <li class="social-facebook">
+                      <span> <i class="fa fa-google-plus fa-2x" ></i> </span>
+                  </li>
+                  
+              </ul>
+       </div> 
+     </div>
+    <p class="pull-right">&copy;   <?php echo date('Y').' '.date('m') ?> - Service Informatique de la DIA </p>
+    <p class="pull-left"> Supérviseur : Commandant MAMITIANA </p>
+</div>
+</div>
